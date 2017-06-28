@@ -28,3 +28,4 @@ if (listF == listR) println("yes it is a palindrome")
 else println("no it aint no palindrome")
 
 //flatten a nested list structure
+
