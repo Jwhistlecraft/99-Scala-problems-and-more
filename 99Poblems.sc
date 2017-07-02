@@ -52,12 +52,20 @@ val dList = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
 println(dList.distinct)
 //This method drops all duplicates, however the problem asks for the order to remain the same
 // The following solution isn't mine and I would like to go through it with you (especially the :: syntax)
-
-def compressRecursive[A](ls: List[A]): List[A] = ls match {
-  case Nil => Nil
-  case h :: tail => h :: compressRecursive(tail.dropWhile(_ == h))
-}
+//compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+//def compressRecursive[A](ls: List[A]): List[A] = ls match {
+//  case Nil => Nil
+//  case h :: tail => h :: compressRecursive(tail.dropWhile(_ == h))
+//}
 
 //Pack consecutive duplicates into sublists
-
-
+//absolutely no idea, with this one either. Going to wait until I have spoken to you before moving on
+pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+def pack[A](ls: List[A]): List[List[A]] = {
+  if (ls.isEmpty) List(List())
+  else {
+    val (packed, next) = ls span { _ == ls.head }
+    if (next == Nil) List(packed)
+    else packed :: pack(next)
+  }
+}
