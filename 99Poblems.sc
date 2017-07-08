@@ -69,3 +69,4 @@ def pack[A](ls: List[A]): List[List[A]] = {
     else packed :: pack(next)
   }
 }
+
