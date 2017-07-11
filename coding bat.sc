@@ -7,6 +7,7 @@ def sleepIn(weekDay:Boolean, vacation:Boolean): Boolean = {
     if (!weekDay  || vacation) true // means(weekDay != true || vacation == true)
     else false
 }
+
 sleepIn(weekDay = false, vacation = false)
 sleepIn(weekDay = true, vacation = false)
 sleepIn(weekDay = false, vacation = true)
@@ -19,6 +20,7 @@ def absN(n:Int)= {
   if (n <= 21) 21 - n
   else (n - 21) * 2
 }
+
 absN(19)
 absN(10)
 absN(0)
@@ -31,6 +33,7 @@ def nearHundred(n:Int):Boolean = {
   if (100 - n <= Math.abs(10) || 200 - n <= Math.abs(10)) true
   else false
 }
+
 nearHundred(93)
 nearHundred(90)
 nearHundred(89)
@@ -48,6 +51,7 @@ println(stringConc)
 
 //until the int does not include the int, where as from the int does
 }
+
 missingChar("kitten", 1)
 missingChar("kitten", 0)
 missingChar("kitten", 4)
@@ -62,6 +66,7 @@ def backAround(string:String): Unit = {
   val stringConc = findLast + string
   println(stringConc)
 }
+
 //had to use -1 because strings have a character at the end you cant see which denotes end of string
 backAround("cat")
 backAround("Hello")
@@ -75,6 +80,7 @@ def startHi(string:String):Boolean ={
   if (first2.contentEquals("hi")) true
   else false
 }
+
 startHi("hi there")
 startHi("hi")
 startHi("hello hi")
@@ -88,6 +94,7 @@ def hasTeen(age1:Int, age2:Int, age3:Int): Boolean = {
       age3 < 20 && age3 > 12) true
   else false
 }
+
 hasTeen(13, 20, 10)
 hasTeen(20, 19, 10)
 hasTeen(20, 10, 12)
@@ -100,6 +107,7 @@ def mixStart(string:String): Boolean ={
   if (ixString.contentEquals("ix")) true
   else false
 }
+
 mixStart("mix snacks")
 mixStart("pix snacks")
 mixStart("piz snacks")
@@ -115,6 +123,7 @@ def close10(int1: Int, int2:Int): Unit = {
     case z if math.abs(10 - int1) > math.abs(10 - int2) => println("int2=" + int2)
   }
 }
+
 close10(8, 13)
 close10(13, 8)
 close10(13, 7)
@@ -126,6 +135,7 @@ def stringE(string:String): Unit = {
   if (countE > 0 && countE < 4) println(countE)
   else println("either too many or too few e's")
 }
+
 stringE("Hello")
 stringE("Heelle")
 stringE("Heelele")
@@ -140,6 +150,7 @@ def everyNth(stringy:String, stepAmount:Int): Unit ={
   }
   println(iter(0))
 }
+
 everyNth("Miracle", 2)
 everyNth("abcdefg", 2)
 everyNth("abcdefg", 3)
@@ -151,6 +162,7 @@ def monkeyTrouble(aSmile:Boolean, bSmile:Boolean): Boolean ={
   if ((aSmile && bSmile) || (!aSmile && !bSmile)) true
   else false
 }
+
 monkeyTrouble(true, true)
 monkeyTrouble(false, false)
 monkeyTrouble(true, false) /*note for future if i have more parameters that can be cleanly assessed using if/else
@@ -207,9 +219,49 @@ frontBack("a")
 frontBack("ab")
 
 
+/*
+Return true if the given non-negative number is a multiple of 3 or a multiple of 5.
+ se the % "mod" operator -- see Introduction to Mod*/
+
+def or35(int:Int): Boolean={
+if (int %3 ==0 || int %5 == 5) true
+else false
+}
+
+or35(3)
+or35(10)
+or35(8)
 
 
+/*We'll say that a number is "teen" if it is in the range 13..19 inclusive.
+ given 2 int values, return true if one or the other is teen, but not both.*/
+
+def loneTeen(intA:Int, intB:Int): Boolean ={
+  (intA,intB) match {
+    case x if intA >= 12 && intA <= 19 => true
+    case y if intB >= 12 && intB <= 19 => true
+    case _ => false
+  }
+}
+
+loneTeen(13, 99)
+loneTeen(21, 19)
+loneTeen(13, 13)
 
 
+/*Given a string, return a string made of the first 2 chars (if present),
+however include first char only if it is 'o' and include the second only if it is 'z',
+so "ozymandias" yields "oz".*/
 
+def startOz(str: String): Unit ={
+    var result = ""
+    if (str.length >= 1 && str.charAt(0) == 'o') println(result + str.charAt(0))
+    if (str.length >= 2 && str.charAt(1) == 'z') println(result + str.charAt(1))
+}
 
+startOz("ozymandias")
+startOz("bzoo")
+startOz("oxx")
+
+/*Given 2 int values, return true if they are both in the range 30..40 inclusive,
+or they are both in the range 40..50 inclusive.*/
